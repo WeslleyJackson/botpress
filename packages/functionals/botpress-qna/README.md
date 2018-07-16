@@ -77,6 +77,16 @@ const questionsFlatExported = await bp.qna.export({ flat: true })
 // ]
 ```
 
+## Controlling whether Q&A should intercept
+
+It may appear that it's not usefule for Q&A to just intercept all the users' messages and try to match them against Q&A's intents. This can be customized by providing a hook to Q&A module that will prevent interception when returning `false`.
+
+The hook is an async-function accepting `event` and `state` parameters:
+
+```js
+bp.qna.shouldProcessMessage(async (event, state) => state.qnaEnabled)
+```
+
 # Contributing
 
 The best way to help right now is by helping with the exising issues here on GitHub and by reporting new issues!
